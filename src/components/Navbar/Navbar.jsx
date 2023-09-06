@@ -1,11 +1,13 @@
-
+import { useState } from 'react';
 import './navbar.css';
 import logo from '../../assets/logo.svg';
 import { BsSearch } from 'react-icons/bs';
 import { RiGlobalLine } from 'react-icons/ri'
-import {GiHamburgerMenu} from 'react-icons/gi'
-import {FaUserCircle} from 'react-icons/fa'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { FaUserCircle } from 'react-icons/fa'
+
 const Navbar = () => {
+    const [openProfileDropdown,setOpenProfileDropdown] = useState(false)
     return (
         <>
             <nav>
@@ -28,9 +30,18 @@ const Navbar = () => {
                         <div className='global-container'>
                             <div className='global'> <RiGlobalLine className='global-icon' /></div>
                         </div>
-                        <div className='profile-container'>
-                            <div className='account-icons'><GiHamburgerMenu className='burger-icon'/></div>
-                            <div className='account-icons'><FaUserCircle className='user-icon'/></div>
+                        <div onClick={()=>setOpenProfileDropdown(!openProfileDropdown)} className='profile-container'>
+                            <div className={`${openProfileDropdown ? 'profile-drop': 'show-profile-drop'}`}>
+                                <ul className='profile-drop-container'>
+                                    <li><button>Sign up</button></li>
+                                    <li><button>Log in</button></li>
+                                    <hr className='hr' />
+                                    <li><button>Airbnb your home</button></li>
+                                    <li><button>Help Center</button></li>
+                                </ul>
+                            </div>
+                            <div className='account-icons'><GiHamburgerMenu className='burger-icon' /></div>
+                            <div className='account-icons'><FaUserCircle className='user-icon' /></div>
                         </div>
                     </div>
                 </div>

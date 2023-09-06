@@ -16,14 +16,15 @@
 }
 .heart{
     position: absolute;
-    left: 85%;
-    top: 6%;
-    font-size: 25px;
+    left: 88%;
+    top: 4%;
+    font-size: 20px;
     color: #645550;
    
 }
 .card-wrapper img {
     border-radius: 10px;
+    object-fit: cover;
 }
 .card-title{
     display: flex;
