@@ -7,7 +7,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { FaUserCircle } from 'react-icons/fa'
 
 const Navbar = () => {
-    const [openProfileDropdown,setOpenProfileDropdown] = useState(false)
+    const [openProfileDropdown,setOpenProfileDropdown] = useState(true)
     return (
         <>
             <nav>

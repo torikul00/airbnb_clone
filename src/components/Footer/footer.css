@@ -1,0 +1,129 @@
+footer{
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+    background-color: #F7F7F7;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 50px;
+}
+.footer-title{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.footer-category-container a {
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #797979;
+}
+.footer-divider1{
+    margin-top: 10px;
+    border: 1px solid #dddddda1;
+}
+.footer-city-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6 , 1fr);
+    padding: 30px 0px;
+}
+.city{
+    margin: 20px 0px;
+
+}
+.footer-city-container p {
+    font-size: 14px;
+}
+.rental-type{
+    color: #797979;
+}
+.footer-links-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 30px 0px;
+
+}
+.link-title{
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+.links a{
+    display: block;
+    margin: 10px 0px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+.links a:hover{
+    text-decoration: underline;
+}
+.footer-bottom-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.copyright{
+    display: inline;
+}
+
+.footer-bottom-left a {
+    text-decoration: none;
+    margin: 0px 10px;
+    font-size: 14px;
+    color: #222222;
+}
+.footer-bottom-left a:hover{
+    text-decoration: underline;
+}
+.footer-bottom-left p {
+    display: inline;
+    
+}
+.right-links{
+    display: flex;
+    align-items: center;
+}
+.right-links p {
+    display: inline;
+}
+.dollar{
+    margin: 0px 5px;
+}
+.usd{
+    text-decoration: none;
+    font-size: 14px;
+    color: #222222;
+
+}
+.usd:hover{
+    text-decoration: underline;
+}
+.gicon{
+    margin-right: 10px;
+}
+.eng{
+    display: flex;
+    align-items: center;
+}
+.eng a {
+    color: #222222;
+    font-size: 14px;
+    text-decoration: none;
+
+}
+.eng a:hover{
+    text-decoration: underline;
+}
+.socials{
+    display: flex;
+    align-items: center;
+}
+.social-icon{
+    font-size: 20px;
+   margin-left: 9px;
+   cursor: pointer;
+}
