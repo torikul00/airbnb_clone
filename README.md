@@ -1,2 +1,2 @@
-# Air bnb websie clone by TORIKUL ISLAM
+# Airbnb website clone by TORIKUL ISLAM
 
