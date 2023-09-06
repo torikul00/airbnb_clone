@@ -1,0 +1,54 @@
+.card-container{
+    width: 100%;
+    padding: 0px 40px;
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(4 , 1fr);
+    
+   
+
+}
+.card-wrapper{
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+
+}
+.heart{
+    position: absolute;
+    left: 85%;
+    top: 6%;
+    font-size: 25px;
+    color: #645550;
+   
+}
+.card-wrapper img {
+    border-radius: 10px;
+}
+.card-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-title h2 {
+    font-size: 15px;
+    line-height: 19px;
+    color: #222222;
+}
+.rating{
+    display: flex;
+    align-items: center;
+}
+.rating-icon{
+    color: #222222;
+    margin-right: 5px;
+}
+.card-desc{
+    font-size: 15px;
+   
+    color: #717171;
+}
+.card-price{
+    font-size: 15px;
+    color: #222222;
+}
