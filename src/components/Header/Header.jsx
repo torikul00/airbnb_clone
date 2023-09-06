@@ -7,9 +7,11 @@ import { HiOutlineAdjustments } from 'react-icons/hi'
 const Header = () => {
 
     return (
-        <>
+        <header>
             <Navbar />
-            <header>
+
+            <div className='header'>
+
                 <div className="category-container">
                     <div className="categories-wrapper">
                         {categoryData.map(item => (
@@ -27,10 +29,10 @@ const Header = () => {
                             <p>Filters</p>
                         </div>
                         <div className="total-tax">
-                           <div className='tax'> <p>Display total before taxes</p></div>
+                            <div className='tax'> <p>Display total before taxes</p></div>
                             <div>
-                            <input className="tgl tgl-light" id="cb1" type="checkbox" />
-                            <label className="tgl-btn" htmlFor="cb1"></label>
+                                <input className="tgl tgl-light" id="cb1" type="checkbox" />
+                                <label className="tgl-btn" htmlFor="cb1"></label>
                             </div>
 
                         </div>
@@ -38,9 +40,9 @@ const Header = () => {
 
                     </div>
                 </div>
+            </div>
+        </header>
 
-            </header>
-        </>
     );
 };
 

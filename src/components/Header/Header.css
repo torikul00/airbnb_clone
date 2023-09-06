@@ -1,4 +1,13 @@
-header {
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
+}
+
+.header {
     width: 100%;
     max-width: 1500px;
     height: 98px;
