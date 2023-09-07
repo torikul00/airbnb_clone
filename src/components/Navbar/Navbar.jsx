@@ -5,11 +5,13 @@ import { BsSearch } from 'react-icons/bs';
 import { RiGlobalLine } from 'react-icons/ri'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { FaUserCircle } from 'react-icons/fa'
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
 const Navbar = () => {
 
     const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
-    const [showSearchBox, setShowSearchBox] = useState(false)
+    const [showSearchBox, setShowSearchBox] = useState(true)
+    const [showAgeModal, setShowAgeModal] = useState(false)
     return (
 
         <nav>
@@ -18,8 +20,8 @@ const Navbar = () => {
                 {/* search box */}
                 {showSearchBox && <>
                     <div data-aos="zoom-in" data-aos-once="true" className="search-box-container">
-                        <div className="search-box">
-                            <div className='src-category'>
+                        <div className={showAgeModal ? 'search-box-active' : 'search-box'}>
+                            <div className='src-category1'>
                                 <p className='src-box-title'>Where</p>
                                 <p className='src-box-stitle'><input placeholder='Search-destination' type="text" name="" className='search-des' /></p>
                             </div>
@@ -34,7 +36,52 @@ const Navbar = () => {
                                     <p className='src-box-stitle'>Add dates</p>
                                 </div>
                             </div>
-                            <div className='src-category'>
+                            <div onClick={() => setShowAgeModal(true)} className={showAgeModal ? 'src-category-active' : 'src-category'}>
+                                {showAgeModal && <div data-aos="zoom-in"  data-aos-once="true" className="age-modal-container">
+                                    <div className='age-wrapper'>
+                                        <div>
+                                            <p className='age-title'>Adults</p>
+                                            <p className='age-limit'>Age 13 or above</p>
+                                        </div>
+                                        <div>
+                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                        </div>
+
+                                    </div>
+                                    <hr className="age-devider" />
+                                    <div className='age-wrapper'>
+                                        <div>
+                                            <p className='age-title'>Children</p>
+                                            <p className='age-limit'>Ages 2–12</p>
+                                        </div>
+                                        <div>
+                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                        </div>
+
+                                    </div>
+                                    <hr className="age-devider" />
+                                    <div className='age-wrapper'>
+                                        <div>
+                                            <p className='age-title'>Infants</p>
+                                            <p className='age-limit'>Under 2</p>
+                                        </div>
+                                        <div>
+                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                        </div>
+
+                                    </div>
+                                    <hr className="age-devider" />
+                                    <div className='age-wrapper'>
+                                        <div>
+                                            <p className='age-title'>Pets</p>
+                                            <p className='age-limit'>Bringing a service animal?</p>
+                                        </div>
+                                        <div>
+                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                        </div>
+
+                                    </div>
+                                </div>}
                                 <p className='src-box-title'>Who</p>
                                 <p className='src-box-stitle'>Add guestes</p>
                                 <div className='guest-search'>
