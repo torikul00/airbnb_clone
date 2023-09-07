@@ -6,12 +6,22 @@ import { RiGlobalLine } from 'react-icons/ri'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { FaUserCircle } from 'react-icons/fa'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const Navbar = () => {
 
     const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
-    const [showSearchBox, setShowSearchBox] = useState(true)
-    const [showAgeModal, setShowAgeModal] = useState(false)
+    const [showSearchBox, setShowSearchBox] = useState(false)
+    const [showTab, setShowTab] = useState('')
+    const [dateChanged, setDateChanged] = useState(false)
+    const [date, setDate] = useState([{
+        startDate: new Date(),
+        endDate: new Date(),  //addDays(new Date(), 7)
+        key: 'selection'
+    }]);
+
     return (
 
         <nav>
@@ -20,24 +30,54 @@ const Navbar = () => {
                 {/* search box */}
                 {showSearchBox && <>
                     <div data-aos="zoom-in" data-aos-once="true" className="search-box-container">
-                        <div className={showAgeModal ? 'search-box-active' : 'search-box'}>
-                            <div className='src-category1'>
+                        <div className={showTab !== '' ? 'search-box-active' : 'search-box'}>
+                            {showTab === 'outCalender' && <div className="calender-container">
+                                <DateRange
+                                    className='date-range'
+                                    editableDateInputs={true}
+                                    onChange={item => {
+                                        setDate([item.selection])
+                                        setDateChanged(true)
+                                    }}
+                                    moveRangeOnFirstSelection={false}
+                                    months={2}
+                                    ranges={date}
+                                    direction="horizontal"
+                                />
+                            </div>}
+                            {showTab === 'InCalender' || showTab === 'anyWeek' ? <div className="calender-container">
+                                <DateRange
+                                    className='date-range'
+                                    editableDateInputs={true}
+                                    onChange={item => {
+                                        setDate([item.selection])
+                                        setDateChanged(true)
+                                    }}
+                                    moveRangeOnFirstSelection={false}
+                                    months={2}
+                                    ranges={date}
+                                    direction="horizontal"
+                                />
+                            </div> : ''}
+                            <div onClick={() => setShowTab('anyWhere')} className={showTab === 'anyWhere' ? 'src-category1-active ' : 'src-category1'}>
                                 <p className='src-box-title'>Where</p>
                                 <p className='src-box-stitle'><input placeholder='Search-destination' type="text" name="" className='search-des' /></p>
                             </div>
 
                             <div className='check'>
-                                <div className='check-container'>
-                                    <p className='src-box-title'>Check out</p>
-                                    <p className='src-box-stitle'>Add dates</p>
-                                </div>
-                                <div className='check-container'>
+
+                                <div onClick={() => setShowTab('InCalender')} className={showTab === 'InCalender' || showTab === 'anyWeek' ? 'check-container-active' : 'check-container'}>
                                     <p className='src-box-title'>Check in</p>
                                     <p className='src-box-stitle'>Add dates</p>
                                 </div>
+                                <div onClick={() => setShowTab('outCalender')} className={showTab === 'outCalender' ? 'check-container-active' : 'check-container'}>
+                                    <p className='src-box-title'>Check out</p>
+                                    <p className='src-box-stitle'>Add dates</p>
+                                </div>
                             </div>
-                            <div onClick={() => setShowAgeModal(true)} className={showAgeModal ? 'src-category-active' : 'src-category'}>
-                                {showAgeModal && <div data-aos="zoom-in"  data-aos-once="true" className="age-modal-container">
+                            <div onClick={() => setShowTab('age')} className={showTab === 'age' || showTab === "addGuest" ? 'src-category-active' : 'src-category'}>
+
+                                {showTab === "addGuest" || showTab === 'age' ? <div data-aos="zoom-in" data-aos-once="true" className="age-modal-container">
                                     <div className='age-wrapper'>
                                         <div>
                                             <p className='age-title'>Adults</p>
@@ -81,7 +121,7 @@ const Navbar = () => {
                                         </div>
 
                                     </div>
-                                </div>}
+                                </div> : ''}
                                 <p className='src-box-title'>Who</p>
                                 <p className='src-box-stitle'>Add guestes</p>
                                 <div className='guest-search'>
@@ -102,9 +142,9 @@ const Navbar = () => {
                     </div>
                     {showSearchBox ? <></> : <div data-aos-once="true" data-aos="zoom-out" onClick={() => setShowSearchBox(true)} className="category">
                         <div className="category-wrapper">
-                            <div className='anywhere'>Anywhere</div>
-                            <div className='any-week'>Any Week</div>
-                            <div className='add-guest'>Add Guests  </div>
+                            <div onClick={() => setShowTab('anyWhere')} className='anywhere'>Anywhere</div>
+                            <div onClick={() => setShowTab('anyWeek')} className='any-week'>Any Week</div>
+                            <div onClick={() => setShowTab('addGuest')} className='add-guest'>Add Guests  </div>
                             <div className='search-icon-wrapper'><BsSearch className='search-icon' /></div>
                         </div>
                     </div>}

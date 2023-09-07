@@ -51,6 +51,8 @@ nav {
     border-left: 1.5px solid #dddddd;
     border-right: 1.5px solid #dddddd;
     font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
 }
 
@@ -58,12 +60,16 @@ nav {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .add-guest {
     color: #717171;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
 }
 
@@ -262,6 +268,8 @@ nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+    position: relative;
+
 }
 
 .search-box-active {
@@ -274,6 +282,14 @@ nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+    position: relative;
+
+}
+
+.calender {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 
 .backdrop {
@@ -299,6 +315,20 @@ nav {
 
 }
 
+.src-category1-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    height: 100%;
+    padding-right: 80px;
+    border-radius: 50px;
+    padding-left: 20px;
+    position: relative;
+    background-color: white;
+    box-shadow: -4px 0px 29px 0px rgba(0, 0, 0, 0.1);
+}
+
 .src-category {
     display: flex;
     flex-direction: column;
@@ -309,7 +339,8 @@ nav {
     border-radius: 50px;
     padding-left: 20px;
     position: relative;
-   
+
+
 }
 
 .src-category-active {
@@ -323,8 +354,7 @@ nav {
     padding-left: 20px;
     position: relative;
     background-color: white;
-   
-
+    box-shadow: -4px 0px 29px 0px rgba(0, 0, 0, 0.1);
 }
 
 .src-category:hover {
@@ -352,6 +382,24 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
     cursor: pointer;
+    position: relative;
+}
+
+.calender-container {
+    width: 100%;
+    height: 70vh;
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.date-range {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .search-des {
@@ -375,6 +423,17 @@ nav {
     justify-content: center;
     padding: 0px 20px;
     border-radius: 50px;
+}
+
+.check-container-active {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20px;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: -4px 0px 29px 0px rgba(0, 0, 0, 0.1);
 }
 
 .check-container:hover {
