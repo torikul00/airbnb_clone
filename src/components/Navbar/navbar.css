@@ -401,6 +401,9 @@ nav {
     border-radius: 15px;
     overflow: hidden;
 }
+.rdrMonths {
+    justify-content: space-evenly;
+}
 
 .search-des {
     border: none;

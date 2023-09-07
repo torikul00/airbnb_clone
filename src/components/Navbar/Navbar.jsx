@@ -9,6 +9,7 @@ import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { format } from 'date-fns';
 
 const Navbar = () => {
 
@@ -21,6 +22,10 @@ const Navbar = () => {
         endDate: new Date(),  //addDays(new Date(), 7)
         key: 'selection'
     }]);
+    const startDate = format(date[0].startDate, 'MMM d')
+    const endDate = format(date[0].endDate, 'MMM d')
+
+
 
     return (
 
@@ -33,6 +38,7 @@ const Navbar = () => {
                         <div className={showTab !== '' ? 'search-box-active' : 'search-box'}>
                             {showTab === 'outCalender' && <div className="calender-container">
                                 <DateRange
+                                    rangeColors={['#FF385C']}
                                     className='date-range'
                                     editableDateInputs={true}
                                     onChange={item => {
@@ -47,6 +53,7 @@ const Navbar = () => {
                             </div>}
                             {showTab === 'InCalender' || showTab === 'anyWeek' ? <div className="calender-container">
                                 <DateRange
+                                    rangeColors={['#FF385C']}
                                     className='date-range'
                                     editableDateInputs={true}
                                     onChange={item => {
@@ -68,11 +75,11 @@ const Navbar = () => {
 
                                 <div onClick={() => setShowTab('InCalender')} className={showTab === 'InCalender' || showTab === 'anyWeek' ? 'check-container-active' : 'check-container'}>
                                     <p className='src-box-title'>Check in</p>
-                                    <p className='src-box-stitle'>Add dates</p>
+                                    <p className='src-box-stitle'>{startDate}</p>
                                 </div>
                                 <div onClick={() => setShowTab('outCalender')} className={showTab === 'outCalender' ? 'check-container-active' : 'check-container'}>
                                     <p className='src-box-title'>Check out</p>
-                                    <p className='src-box-stitle'>Add dates</p>
+                                    <p className='src-box-stitle'>{endDate}</p>
                                 </div>
                             </div>
                             <div onClick={() => setShowTab('age')} className={showTab === 'age' || showTab === "addGuest" ? 'src-category-active' : 'src-category'}>

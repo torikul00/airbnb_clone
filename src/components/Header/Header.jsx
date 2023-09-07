@@ -5,6 +5,7 @@ import './Header.css'
 import categoryData from './categoryData';
 import { HiOutlineAdjustments } from 'react-icons/hi'
 import { GrClose } from 'react-icons/gr'
+import FilterModal from '../FilterModal/FilterModal';
 const Header = () => {
 
     const [sticky, setSticky] = useState(false)
@@ -33,19 +34,9 @@ const Header = () => {
 
     return (
         <>
-            {showFilterModal && <div className="modal-backdrop">
-
-                <div data-aos="fade-up" className="filter-modal-container">
-                    <div className="modal-top">
-                        <p className='filter-txt'>Filter</p>
-                        <div onClick={()=>setShowFilterModal(false)} className="cls-icon">
-                        <GrClose  className='close-icon'  />
-                        </div>
-                    </div>
-                </div>
-            </div>}
+            {showFilterModal && <FilterModal  setShowFilterModal={setShowFilterModal} />}
             <header>
-                <Navbar />
+                <Navbar/>
 
                 <div className={sticky ? 'sticky-header' : 'header'}>
 
