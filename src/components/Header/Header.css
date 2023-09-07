@@ -3,7 +3,7 @@ header{
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 999;
     background-color: white;
 }
 
@@ -12,6 +12,13 @@ header{
     max-width: 1500px;
     height: 98px;
     margin: 0px auto;
+}
+.sticky-header{
+    width: 100%;
+    max-width: 1500px;
+    height: 80px;
+    margin: 0px auto;
+    transition: 0.3s all;
 }
 
 .category-container {

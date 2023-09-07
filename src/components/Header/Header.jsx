@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar'
 import Category from './Category';
 import './Header.css'
@@ -6,11 +7,34 @@ import categoryData from './categoryData';
 import { HiOutlineAdjustments } from 'react-icons/hi'
 const Header = () => {
 
+    const [sticky, setSticky] = useState(false)
+
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
+    // catch the window scrolling
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleScroll = () => {
+        const currentScrollPos = window.pageYOffset;
+
+        if (currentScrollPos > prevScrollPos) {
+            setSticky(true);
+        }
+        else {
+            setSticky(false)
+        }
+        setPrevScrollPos(currentScrollPos);
+    };
+
     return (
         <header>
             <Navbar />
 
-            <div className='header'>
+            <div className={sticky ? 'sticky-header' : 'header'}>
 
                 <div className="category-container">
                     <div className="categories-wrapper">

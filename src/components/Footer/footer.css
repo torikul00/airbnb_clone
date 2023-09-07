@@ -1,11 +1,16 @@
+
 footer{
+    width: 100%;
+    background-color: #F7F7F7;
+}
+.footer-main-container{
     width: 100%;
     max-width: 1500px;
     height: auto;
-    background-color: #F7F7F7;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 50px;
+    margin: 0px auto;
 }
 .footer-title{
     font-size: 22px;

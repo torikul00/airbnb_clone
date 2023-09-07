@@ -1,4 +1,3 @@
-import React from 'react';
 import './footer.css'
 import { RiGlobalLine } from 'react-icons/ri'
 import { AiFillFacebook ,AiFillInstagram} from 'react-icons/ai'
@@ -6,7 +5,8 @@ import { FaTwitterSquare } from 'react-icons/fa'
 const Footer = () => {
     return (
         <footer>
-            <h3 className='footer-title'>Inspiration for future getaways</h3>
+           <div className="footer-main-container">
+           <h3 className='footer-title'>Inspiration for future getaways</h3>
             <div className="footer-category-container">
                 <a href="">Popular</a>
                 <a href="">Arts & culture</a>
@@ -172,6 +172,7 @@ const Footer = () => {
               </div>
             </div>
             </div>
+           </div>
         </footer>
     );
 };

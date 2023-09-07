@@ -1,10 +1,17 @@
 nav {
+    position: relative;
+    width: 100%;
+}
+
+.nav {
     max-width: 1500px;
     margin: 0px auto;
     width: 100%;
     height: 80px;
     padding: 0px 40px;
     border-bottom: 0.7px solid #ddddddcc;
+    position: relative;
+
 }
 
 .flex-container {
@@ -22,7 +29,7 @@ nav {
     background-color: white;
     border: 1px solid #dddddd;
     border-radius: 40px;
-    margin-left: 140px;
+    margin-left: 190px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
     cursor: pointer;
@@ -57,7 +64,7 @@ nav {
     color: #717171;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    
+
 }
 
 .search-icon-wrapper {
@@ -94,6 +101,7 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+
 
 .global {
     background-color: transparent;
@@ -137,50 +145,56 @@ nav {
     position: relative;
 
 }
-.profile-drop{
+
+.profile-drop {
     width: 200px;
     height: 200px;
     background-color: #717171;
-    z-index: 999;
+    z-index: 10;
     position: absolute;
     right: 10px;
     top: 50px;
     display: none;
-    
+
 }
-.show-profile-drop{
+
+.show-profile-drop {
     display: block;
     width: 250px;
     background-color: #ffffff;
-    z-index: 999;
+    z-index: 10;
     position: absolute;
     right: 10px;
     top: 55px;
     border-radius: 15px;
 
 }
-.profile-drop-container{
+
+.profile-drop-container {
     padding: 10px 0px;
     list-style-type: none;
-    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    
+
 }
-.hr{
+
+.hr {
     border: 0.2px solid #dddddd83;
     margin: 7px 0px;
 }
+
 .profile-drop-container li button {
-   width: 100%;
-   text-align: left;
-   cursor: pointer;
-   padding: 10px 20px;
-   background-color: transparent;
-   border: none;
-   
-   
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+
+
 }
-.profile-drop-container li button:hover{
+
+.profile-drop-container li button:hover {
     background-color: #dddddd79;
 }
 
@@ -205,3 +219,131 @@ nav {
 .burger-icon {
     color: #717171;
 }
+
+/* search details code starts from here */
+.search-navbar {
+    margin-left: 190px;
+    position: relative;
+    position: static;
+}
+
+.search-navbar ul li {
+
+    list-style-type: none;
+    display: inline;
+    margin-right: 30px;
+    cursor: pointer;
+    color: #222222;
+    padding-bottom: 5px;
+}
+
+.search-navbar ul li:hover {
+    border-bottom: 2px solid #7C838F;
+    color: #7C838F;
+}
+
+.search-box-container {
+
+    height: 80px;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.search-box {
+    width: 60%;
+    height: 80%;
+    border: 1px solid #dddddd;
+    margin: 0px auto;
+    border-radius: 50px;
+}
+
+.backdrop {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.342);
+    position: fixed;
+    top: 160px;
+    bottom: 0;
+    z-index: -2;
+}
+
+.search-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+
+}
+
+.src-category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    height: 100%;
+    padding-right: 80px;
+    border-radius: 50px;
+    padding-left: 20px;
+    position: relative;
+
+}
+.src-category:hover{
+    background-color: #EBEBEB;
+}
+
+.src-box-title {
+    color: #222222;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.src-box-stitle {
+    color: #717171;
+    font-size: 14px;
+    line-height: 18px;
+}
+.check{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    cursor: pointer;
+}
+.search-des{
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+}
+.search-des:focus{
+    outline: none;
+}
+.search-des::placeholder{
+    font-size: 14px;
+}
+.check-container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20px;
+    border-radius: 50px;
+}
+.check-container:hover{
+    background-color: #EBEBEB;
+}
+.guest-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 50%;
+    position: absolute;
+    left: 78%;
+    background-color: #FF385C;
+}
+.gsearh-icon{
+    color: white;
+}
+
