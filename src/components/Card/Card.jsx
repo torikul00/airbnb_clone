@@ -8,7 +8,6 @@ const Card = ({ singleRoom }) => {
 
     const { location, image, rating, price, dateRange, propertyType } = singleRoom;
     const { showTotal } = useContext(AllRoomsContext)
-    console.log(showTotal)
 
     let startDate = dateRange.split(' - ')[0]
     let endDate = dateRange.split(' - ')[1]

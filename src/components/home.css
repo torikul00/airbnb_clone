@@ -2,4 +2,20 @@ main {
     width: 100%;
     max-width: 1500px;
     margin: 0px auto;
+    
+}
+.showmore-button{
+    display: block;
+    border: none;
+    background-color: #222222e5;
+    color: white;
+    width:140px;
+    height: 50px;
+    cursor: pointer;
+    margin: 50px auto;
+    border-radius: 12px;
+    font-size: 16px;
+}
+.showmore-button:hover{
+    background-color:#222222 ;
 }

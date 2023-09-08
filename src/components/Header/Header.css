@@ -37,12 +37,11 @@ header{
     display: flex;
     justify-content: space-between;
 
-
 }
 
 
 .single-category {
-
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,7 +73,7 @@ header{
     padding-top: 8px;
     transition: 0.3s;
     padding-bottom: 5px;
-    border-bottom: 2px solid #dddddd00;
+    border-bottom: 2px solid #972c2c00;
 
 }
 

@@ -7,9 +7,8 @@ import './home.css'
 import { AllRoomsContext } from './RoomProvider';
 
 const Home = () => {
-    const {rooms} = useContext(AllRoomsContext)
- 
-
+    const { rooms } = useContext(AllRoomsContext)
+    const [showAllData, setShowAllData] = useState(false)
 
     return (
         <>
@@ -17,9 +16,15 @@ const Home = () => {
             <Header />
             <main>
                 <div className="card-container">
-                    {rooms?.map(singleRoom => (<Card singleRoom={singleRoom} key={singleRoom._id} />))}
+
+                    {
+                        showAllData ? rooms?.map(singleRoom => (<Card singleRoom={singleRoom} key={singleRoom._id} />)) : rooms?.slice(0, 20).map(singleRoom => (<Card singleRoom={singleRoom} key={singleRoom._id} />))
+
+                    }
+
 
                 </div>
+                {showAllData === false && <button onClick={() => setShowAllData(true)} className='showmore-button'>Show more</button>}
             </main>
             <Footer />
         </>

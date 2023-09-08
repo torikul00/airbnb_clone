@@ -11,6 +11,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
 import { HiMiniXMark } from 'react-icons/hi2';
+import { Link, useNavigate } from 'react-router-dom';
 const Navbar = () => {
 
     const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
@@ -39,6 +40,7 @@ const Navbar = () => {
         setPets(0)
 
     }
+    const navigate = useNavigate()
     return (
 
         <nav>
@@ -160,7 +162,7 @@ const Navbar = () => {
                 <div className="flex-container">
                     <div className="logo">
 
-                        <a href="/"><img src={logo} alt="logo" width="100" height="100" /></a>
+                        <Link to="/"><img src={logo} alt="logo" width="100" height="100" /></Link>
 
                     </div>
                     {showSearchBox ? <></> : <div data-aos-once="true" data-aos="zoom-out" onClick={() => setShowSearchBox(true)} className="category">

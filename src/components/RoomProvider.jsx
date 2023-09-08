@@ -5,25 +5,25 @@ export const AllRoomsContext = createContext(null)
 const RoomsProvider = ({ children }) => {
     const [showSearchQuery, setShowSearchQuery] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [allCategoryRooms, setAllCategoryRooms] = useState([])
+    const [allRooms, setAllRooms] = useState([])
     const [rooms, setRooms] = useState([])
     const [showTotal,setShowTotal] = useState(false)
  
-
+    console.log(rooms)
     useEffect(() => {
 
         fetch('http://localhost:5000/allRooms')
             .then(res => res.json())
-            .then(data => {
-                setRooms(data)
-                setAllCategoryRooms(data)
+            .then(roomsData => {
+                setRooms(roomsData)
+                setAllRooms(roomsData)
                 setLoading(false)
             })
     }, [])
     const roomsData = {
         loading,
         setRooms,
-        allCategoryRooms,
+        allRooms,
         rooms,
         showSearchQuery,
         setShowSearchQuery,
