@@ -9,7 +9,6 @@ const RoomsProvider = ({ children }) => {
     const [rooms, setRooms] = useState([])
     const [showTotal,setShowTotal] = useState(false)
  
-    console.log(rooms)
     useEffect(() => {
 
         fetch('http://localhost:5000/allRooms')

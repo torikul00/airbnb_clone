@@ -18,8 +18,6 @@ const Category = ({ category }) => {
         else {
             const specificCategoryRooms = allRooms?.filter(room => room.category === categoryType);
             setRooms(specificCategoryRooms)
-            console.log(specificCategoryRooms);
-            console.log(categoryType)
         }
 
     }, [categoryType])

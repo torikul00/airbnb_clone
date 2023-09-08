@@ -5,9 +5,11 @@ import { PiWarehouse } from 'react-icons/pi';
 import { BiSolidCity } from 'react-icons/bi';
 import { RiHotelLine } from 'react-icons/ri';
 import MultiRangeSlider from "multi-range-slider-react";
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AllRoomsContext } from '../RoomProvider';
 
-const FilterModal = ({setShowFilterModal}) => {
+
+const FilterModal = ({ setShowFilterModal }) => {
     const [roomType, setRoomType] = useState('All type');
     const [minPrice, setMinPrice] = useState(50);
     const [maxPrice, setMaxPrice] = useState(1100);
@@ -15,11 +17,33 @@ const FilterModal = ({setShowFilterModal}) => {
     const [beds, setBeds] = useState(0);
     const [bathrooms, setBathrooms] = useState(0);
     const [propertyType, setPropertyType] = useState([]);
+    const [filteredRoom, setFilteredRoom] = useState([]);
+
+    const { setRooms } = useContext(AllRoomsContext)
+
+    console.log(filteredRoom)
+
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/allRooms/filters?roomType=${roomType}&minPrice=${minPrice}&maxPrice=${maxPrice}&beds=${beds}&bedrooms=${bedrooms}&propertyType=${propertyType}&bathrooms=${bathrooms}`)
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setFilteredRoom(data)
+
+            })
+    }, [minPrice, maxPrice, beds, bedrooms, propertyType, bathrooms,roomType])
 
     const handleRangePrice = (e) => {
         setMinPrice(e.minValue);
         setMaxPrice(e.maxValue);
     };
+
+    const handleShowPlace = () => {
+        setRooms(filteredRoom)
+        setShowFilterModal(false)
+    }
 
     const handleBedrooms = (value) => {
         if (bedrooms === value) {
@@ -100,7 +124,7 @@ const FilterModal = ({setShowFilterModal}) => {
                                 <p>Room</p>
                             </li>
 
-                            <li onClick={() => setRoomType('Entire homes')} className={`${roomType === 'Entire homes' ? 'active-room-type' : 'default-room-type'}`}>
+                            <li onClick={() => setRoomType('Home')} className={`${roomType === 'Home' ? 'active-room-type' : 'default-room-type'}`}>
                                 <p>Entire home</p>
                             </li>
                         </ul>
@@ -228,7 +252,7 @@ const FilterModal = ({setShowFilterModal}) => {
                     <button onClick={handleClearAll} className="clear-btn">
                         Clear All
                     </button>
-                    <button type="button" className="show-btn">Show 50 Places</button>
+                    <button onClick={handleShowPlace} type="button" className="show-btn">Show {filteredRoom.length} Places</button>
                 </div>
             </div>
         </div>
