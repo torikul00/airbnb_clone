@@ -10,7 +10,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
-
+import { HiMiniXMark } from 'react-icons/hi2';
 const Navbar = () => {
 
     const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
@@ -25,8 +25,21 @@ const Navbar = () => {
     const startDate = format(date[0].startDate, 'MMM d')
     const endDate = format(date[0].endDate, 'MMM d')
 
+    // const { setRooms, showSearchQuery, setShowSearchQuery } = useRooms();
+    const [infants, setInfants] = useState(0)
+    const [searchLocation, setSearchLocation] = useState('')
+    const [adults, setAdults] = useState(0)
+    const [pets, setPets] = useState(0)
+    const [children, setChildren] = useState(0)
+    let guests = adults + children;
 
-
+    const resetAgeValue = ()=>{
+        setAdults(0)
+        setChildren(0)
+        setInfants(0)
+        setPets(0)
+        
+    }
     return (
 
         <nav>
@@ -91,7 +104,7 @@ const Navbar = () => {
                                             <p className='age-limit'>Age 13 or above</p>
                                         </div>
                                         <div>
-                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                            <button onClick={() => setAdults(adults - 1)} disabled={adults === 0 && true} className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>{adults}</span> <button onClick={() => setAdults(adults + 1)} disabled={adults === 10 && true} className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
                                         </div>
 
                                     </div>
@@ -102,7 +115,7 @@ const Navbar = () => {
                                             <p className='age-limit'>Ages 2–12</p>
                                         </div>
                                         <div>
-                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                            <button disabled={children === 0 && true} onClick={() => setChildren(children - 1)} className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>{children}</span> <button disabled={children === 6 && true} onClick={() => setChildren(children + 1)} className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
                                         </div>
 
                                     </div>
@@ -113,7 +126,7 @@ const Navbar = () => {
                                             <p className='age-limit'>Under 2</p>
                                         </div>
                                         <div>
-                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                            <button onClick={() => setInfants(infants - 1)} disabled={infants === 0 && true} className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>{infants}</span> <button onClick={() => setInfants(infants + 1)} disabled={infants === 5 && true} className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
                                         </div>
 
                                     </div>
@@ -124,16 +137,20 @@ const Navbar = () => {
                                             <p className='age-limit'>Bringing a service animal?</p>
                                         </div>
                                         <div>
-                                            <button className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>0</span> <button className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
+                                            <button onClick={() => setPets(pets - 1)} disabled={pets === 0 && true} className='age-btn'><div className='count-btn'><AiOutlineMinus /></div></button> <span className='age-count'>{pets}</span> <button disabled={pets === 5 && true} onClick={() => setPets(pets + 1)} className='age-btn'><div className='count-btn'><AiOutlinePlus /></div></button>
                                         </div>
 
                                     </div>
                                 </div> : ''}
                                 <p className='src-box-title'>Who</p>
-                                <p className='src-box-stitle'>Add guestes</p>
+                                <p className='src-box-stitle'>{guests ? guests +'guest,':''}  
+                                {infants > 0 || pets > 0 || guests> 0 ? '' :'Add Guests'}
+                                {infants? '' +infants+' Infants,' :''}    {pets? ' ' +pets +'Pe..' :''}
+                                </p>
                                 <div className='guest-search'>
                                     <BsSearch className='gsearh-icon' />
                                 </div>
+                                {infants > 0 || pets > 0 || guests> 0 ? <div onClick={()=>resetAgeValue()} className='reset-btn'><HiMiniXMark /></div> :''}
                             </div>
 
                         </div>

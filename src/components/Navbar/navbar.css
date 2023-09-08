@@ -339,6 +339,8 @@ nav {
     border-radius: 50px;
     padding-left: 20px;
     position: relative;
+    overflow: hidden;
+    
 
 
 }
@@ -512,6 +514,11 @@ nav {
     color: #7C838F;
 
 }
+.age-btn:disabled{
+    border: 1px solid #7c838f41;
+    cursor: not-allowed;
+    color: #7c838f59;
+}
 
 .count-btn {
     display: flex;
@@ -522,4 +529,14 @@ nav {
 .age-devider {
     border: 1px solid #7c838f13;
     ;
+}
+.reset-btn{
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    background-color: #7c838f2d;
+    padding: 5px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
 }

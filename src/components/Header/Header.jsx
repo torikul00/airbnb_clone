@@ -4,7 +4,6 @@ import Category from './Category';
 import './Header.css'
 import categoryData from './categoryData';
 import { HiOutlineAdjustments } from 'react-icons/hi'
-import { GrClose } from 'react-icons/gr'
 import FilterModal from '../FilterModal/FilterModal';
 const Header = () => {
 

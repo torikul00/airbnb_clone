@@ -160,9 +160,9 @@
     border: none!important;
     border-radius: none;
     padding: 20px 10px;
-    box-shadow: none;
+    box-shadow: none!important;
     user-select: none;
-}
+} 
 
 .multi-range-slider .bar-inner {
     background-color: #2A2A2A !important;
@@ -172,7 +172,7 @@
 .multi-range-slider .thumb::before {
     content: '';
     background-color: white !important;
-    top: -5px;
+    top: 0px!important;
     width: 32px;
     height: 32px;
   
