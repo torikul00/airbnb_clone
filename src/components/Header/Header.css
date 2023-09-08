@@ -1,4 +1,4 @@
-header{
+header {
     position: sticky;
     top: 0;
     left: 0;
@@ -13,7 +13,8 @@ header{
     height: 98px;
     margin: 0px auto;
 }
-.sticky-header{
+
+.sticky-header {
     width: 100%;
     max-width: 1500px;
     height: 80px;
@@ -47,18 +48,31 @@ header{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-
 }
 
+
 .single-category:hover .category-icons {
+    color: black;
+}
+
+.category-icons-active {
     color: black;
 
 }
 
 .single-category:hover .category-label {
     color: black;
-
     border-bottom: 2px solid #dddddd;
+}
+
+.category-label-active {
+    color: #222222;
+    font-size: 12px;
+    padding-top: 8px;
+    transition: 0.3s;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #222222;
+
 }
 
 .category-icons {
@@ -98,7 +112,7 @@ header{
 
 .filter-container p {
     font-size: 13px;
-    
+
 }
 
 .filter-icon {
@@ -108,24 +122,27 @@ header{
     margin-right: 10px;
 }
 
-.total-tax{
+.total-tax {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 12px;
     padding: 14px 16px;
     border: 1px solid #dddddd;
-   
+
 }
-.tax{
+
+.tax {
     padding-right: 5px;
 }
+
 .tax p {
     font-size: 12px;
-  
+
 
 
 }
+
 /* toggle button style */
 .tgl {
     display: none;
@@ -211,5 +228,3 @@ header{
 .tgl-light:checked+.tgl-btn {
     background: #717171;
 }
-
-

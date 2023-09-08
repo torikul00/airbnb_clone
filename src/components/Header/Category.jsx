@@ -26,12 +26,13 @@ const Category = ({ category }) => {
 
     // const specificCategoryRooms = rooms?.filter(room => room.category === categoryType);
 
+    
 
     return (
 
         <Link to={`/?category=${label}`} className="single-category">
-            <Icon className='category-icons' size={24} />
-            <p className="category-label">{label}</p>
+            <Icon className={categoryType=== label ?'category-icons-active':'category-icons'}size={24} />
+            <p className={categoryType=== label?'category-label-active':'category-label'}>{label}</p>
 
         </Link>
 
