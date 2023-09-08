@@ -1,21 +1,23 @@
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Card from './Card/Card';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import './home.css'
+import { AllRoomsContext } from './RoomProvider';
 
 const Home = () => {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8]
-    
-    
+    const {rooms} = useContext(AllRoomsContext)
+ 
+
+
     return (
         <>
-            
-            <Header  />
+
+            <Header />
             <main>
                 <div className="card-container">
-                    {arr.map(item => (<Card />))}
+                    {rooms?.map(singleRoom => (<Card singleRoom={singleRoom} key={singleRoom._id} />))}
 
                 </div>
             </main>

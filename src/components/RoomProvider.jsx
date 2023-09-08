@@ -1,12 +1,14 @@
 import { createContext, useEffect, useState } from 'react';
 
-export const RoomsContext = createContext(null)
+export const AllRoomsContext = createContext(null)
 
 const RoomsProvider = ({ children }) => {
     const [showSearchQuery, setShowSearchQuery] = useState(false)
     const [loading, setLoading] = useState(true)
     const [allCategoryRooms, setAllCategoryRooms] = useState([])
     const [rooms, setRooms] = useState([])
+    const [showTotal,setShowTotal] = useState(false)
+ 
 
     useEffect(() => {
 
@@ -24,12 +26,14 @@ const RoomsProvider = ({ children }) => {
         allCategoryRooms,
         rooms,
         showSearchQuery,
-        setShowSearchQuery
+        setShowSearchQuery,
+        setShowTotal,
+        showTotal
     }
     return (
-        <RoomsContext.Provider value={roomsData}>
+        <AllRoomsContext.Provider value={roomsData}>
             {children}
-        </RoomsContext.Provider>
+        </AllRoomsContext.Provider>
     );
 };
 

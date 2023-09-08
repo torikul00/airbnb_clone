@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar'
 import Category from './Category';
 import './Header.css'
 import categoryData from './categoryData';
 import { HiOutlineAdjustments } from 'react-icons/hi'
 import FilterModal from '../FilterModal/FilterModal';
+import { AllRoomsContext } from '../RoomProvider';
 const Header = () => {
 
     const [sticky, setSticky] = useState(false)
@@ -30,6 +31,7 @@ const Header = () => {
         }
         setPrevScrollPos(currentScrollPos);
     };
+    const {showTotal,setShowTotal} = useContext(AllRoomsContext)
 
     return (
         <>
@@ -58,7 +60,7 @@ const Header = () => {
                             <div className="total-tax">
                                 <div className='tax'> <p>Display total before taxes</p></div>
                                 <div>
-                                    <input className="tgl tgl-light" id="cb1" type="checkbox" />
+                                    <input onClick={()=>setShowTotal(!showTotal)} className="tgl tgl-light" id="cb1" type="checkbox" />
                                     <label className="tgl-btn" htmlFor="cb1"></label>
                                 </div>
 

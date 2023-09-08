@@ -24,10 +24,9 @@ const Navbar = () => {
     }]);
     const startDate = format(date[0].startDate, 'MMM d')
     const endDate = format(date[0].endDate, 'MMM d')
-    console.log(startDate)
+
     // const { setRooms, showSearchQuery, setShowSearchQuery } = useRooms();
     const [infants, setInfants] = useState(0)
-    const [searchLocation, setSearchLocation] = useState('')
     const [adults, setAdults] = useState(0)
     const [pets, setPets] = useState(0)
     const [children, setChildren] = useState(0)

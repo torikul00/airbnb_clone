@@ -1,26 +1,48 @@
-import React from 'react';
+import { useContext } from 'react';
 import './card.css'
-import {AiFillStar} from 'react-icons/ai'
-import {BsFillSuitHeartFill} from 'react-icons/bs'
-const Card = () => {
+import { AiFillStar } from 'react-icons/ai'
+import { BsFillSuitHeartFill } from 'react-icons/bs'
+import { format, parse } from 'date-fns';
+import { AllRoomsContext } from '../RoomProvider';
+const Card = ({ singleRoom }) => {
+
+    const { location, image, rating, price, dateRange, propertyType } = singleRoom;
+    const { showTotal } = useContext(AllRoomsContext)
+    console.log(showTotal)
+
+    let startDate = dateRange.split(' - ')[0]
+    let endDate = dateRange.split(' - ')[1]
+
+    startDate = parse(startDate, 'MMM d, yyyy', new Date())
+    endDate = parse(endDate, 'MMM d, yyyy', new Date())
+
+    const difTime = startDate.getTime() - endDate.getTime()
+    const difNight = difTime / (1000 * 3600 * 24)
+    const night = Math.abs(difNight)
+    const totalPrice = price * night;
+
+
+    startDate = format(startDate, 'MMM d')
+    endDate = format(endDate, 'MMM d')
+
     return (
         <>
-        <div className='card-wrapper'>
-            <div className='heart'><BsFillSuitHeartFill /></div>
-            <div className="card">
-                <img width='100%'  height='285px' src="https://a0.muscache.com/im/pictures/miso/Hosting-26300485/original/ee94e6c1-6ebc-496e-af84-1502edd1b759.jpeg?im_w=720" alt="" />
-              <div className='card-title'>
-              <h2>London, UK</h2>
-              <div className='rating'> <AiFillStar className='rating-icon' /> 4.54</div>
-              </div>
-                <p className='card-desc'>Stay with amelia . Hosting for 5 years </p>
-                <p className='card-desc'>oct1-6</p>
-                <p className='card-price'><strong>$72</strong> night</p>
+            <div className='card-wrapper'>
+                <div className='heart'><BsFillSuitHeartFill /></div>
+                <div className="card">
+                    <img width='100%' height='285px' src={image} alt="" />
+                    <div className='card-title'>
+                        <h2>{location}</h2>
+                        <div className='rating'> <AiFillStar className='rating-icon' />{rating}</div>
+                    </div>
+                    <p className='card-desc'>{propertyType} </p>
+                    <p className='card-desc'>{startDate} , {endDate}</p>
+                    <p className='card-price'>{showTotal ? <strong> ${totalPrice} Total</strong> : <strong>{`$${price} Night`}</strong>}</p>
+
+                </div>
 
             </div>
 
-        </div>
-        
         </>
     );
 };
