@@ -19,12 +19,12 @@ const Navbar = () => {
     const [dateChanged, setDateChanged] = useState(false)
     const [date, setDate] = useState([{
         startDate: new Date(),
-        endDate: new Date(),  //addDays(new Date(), 7)
+        endDate: new Date(),
         key: 'selection'
     }]);
     const startDate = format(date[0].startDate, 'MMM d')
     const endDate = format(date[0].endDate, 'MMM d')
-
+    console.log(startDate)
     // const { setRooms, showSearchQuery, setShowSearchQuery } = useRooms();
     const [infants, setInfants] = useState(0)
     const [searchLocation, setSearchLocation] = useState('')
@@ -33,12 +33,12 @@ const Navbar = () => {
     const [children, setChildren] = useState(0)
     let guests = adults + children;
 
-    const resetAgeValue = ()=>{
+    const resetAgeValue = () => {
         setAdults(0)
         setChildren(0)
         setInfants(0)
         setPets(0)
-        
+
     }
     return (
 
@@ -143,14 +143,14 @@ const Navbar = () => {
                                     </div>
                                 </div> : ''}
                                 <p className='src-box-title'>Who</p>
-                                <p className='src-box-stitle'>{guests ? guests +'guest,':''}  
-                                {infants > 0 || pets > 0 || guests> 0 ? '' :'Add Guests'}
-                                {infants? '' +infants+' Infants,' :''}    {pets? ' ' +pets +'Pe..' :''}
+                                <p className='src-box-stitle'>{guests ? guests + 'guest,' : ''}
+                                    {infants > 0 || pets > 0 || guests > 0 ? '' : 'Add Guests'}
+                                    {infants ? '' + infants + ' Infants,' : ''}    {pets ? ' ' + pets + 'Pe..' : ''}
                                 </p>
                                 <div className='guest-search'>
                                     <BsSearch className='gsearh-icon' />
                                 </div>
-                                {infants > 0 || pets > 0 || guests> 0 ? <div onClick={()=>resetAgeValue()} className='reset-btn'><HiMiniXMark /></div> :''}
+                                {infants > 0 || pets > 0 || guests > 0 ? <div onClick={() => resetAgeValue()} className='reset-btn'><HiMiniXMark /></div> : ''}
                             </div>
 
                         </div>
