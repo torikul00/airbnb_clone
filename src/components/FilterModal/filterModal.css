@@ -337,6 +337,7 @@
     border-radius: 8px;
     padding: 12px 28px;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 .show-btn:hover {

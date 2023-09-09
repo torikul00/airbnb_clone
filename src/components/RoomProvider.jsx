@@ -7,11 +7,11 @@ const RoomsProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [allRooms, setAllRooms] = useState([])
     const [rooms, setRooms] = useState([])
-    const [showTotal,setShowTotal] = useState(false)
- 
+    const [showTotal, setShowTotal] = useState(false)
+
     useEffect(() => {
 
-        fetch('http://localhost:5000/allRooms')
+        fetch('https://airbnb-server-jade.vercel.app/allRooms')
             .then(res => res.json())
             .then(roomsData => {
                 setRooms(roomsData)

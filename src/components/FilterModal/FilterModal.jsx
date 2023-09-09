@@ -25,7 +25,7 @@ const FilterModal = ({ setShowFilterModal }) => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/allRooms/filters?roomType=${roomType}&minPrice=${minPrice}&maxPrice=${maxPrice}&beds=${beds}&bedrooms=${bedrooms}&propertyType=${propertyType}&bathrooms=${bathrooms}`)
+        fetch(`https://airbnb-server-jade.vercel.app/allRooms/filters?roomType=${roomType}&minPrice=${minPrice}&maxPrice=${maxPrice}&beds=${beds}&bedrooms=${bedrooms}&propertyType=${propertyType}&bathrooms=${bathrooms}`)
 
             .then(res => res.json())
             .then(data => {
@@ -33,7 +33,7 @@ const FilterModal = ({ setShowFilterModal }) => {
                 setFilteredRoom(data)
 
             })
-    }, [minPrice, maxPrice, beds, bedrooms, propertyType, bathrooms,roomType])
+    }, [minPrice, maxPrice, beds, bedrooms, propertyType, bathrooms, roomType])
 
     const handleRangePrice = (e) => {
         setMinPrice(e.minValue);

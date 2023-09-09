@@ -50,7 +50,7 @@ const Navbar = () => {
 
     const handleNavSearch = () => {
 
-        fetch(`http://localhost:5000/allRooms/search?destination=${searchDestination}&guests=${guests}&infants=${infants}&pets=${pets}&dateRange=${dateRange}`)
+        fetch(`https://airbnb-server-jade.vercel.app/allRooms/search?destination=${searchDestination}&guests=${guests}&infants=${infants}&pets=${pets}&dateRange=${dateRange}`)
             .then(res => res.json())
             .then(searchData => {
 
@@ -75,7 +75,7 @@ const Navbar = () => {
                         <div className={showTab !== '' ? 'search-box-active' : 'search-box'}>
                             {showTab === 'outCalender' && <div className="calender-container">
                                 <DateRange
-                                    rangeColors={['#FF385C']}
+                                    rangeColors={['#222222']}
                                     className='date-range'
                                     editableDateInputs={true}
                                     onChange={item => {
@@ -90,7 +90,7 @@ const Navbar = () => {
                             </div>}
                             {showTab === 'InCalender' || showTab === 'anyWeek' ? <div className="calender-container">
                                 <DateRange
-                                    rangeColors={['#FF385C']}
+                                    rangeColors={['#222222']}
                                     className='date-range'
                                     editableDateInputs={true}
                                     onChange={item => {
