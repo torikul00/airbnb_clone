@@ -6,6 +6,12 @@ import { GiBoatFishing, GiCastle, GiCaveEntrance, GiIsland, } from 'react-icons/
 
 const categoryData = [
     
+   
+    
+    {
+        label: 'Countryside',
+        icon: TbMountain,
+    },
     {
         label: 'Rooms',
         icon: BiBed,
@@ -15,20 +21,14 @@ const categoryData = [
         icon: GiIsland,
     },
     {
-        label: 'Countryside',
-        icon: TbMountain,
-    },
-    {
         label: 'Iconic Cities',
         icon: FaCity,
     },
+   
+   
     {
         label: 'Beach',
         icon: TbBeach,
-    },
-    {
-        label: 'Pools',
-        icon: TbPool,
     },
     {
         label: 'Castles',
@@ -38,13 +38,18 @@ const categoryData = [
         label: 'Lake',
         icon: GiBoatFishing,
     },
+    
+    {
+        label: 'Skiing',
+        icon: FaSkiing,
+    },
     {
         label: 'Caves',
         icon: GiCaveEntrance,
     },
     {
-        label: 'Skiing',
-        icon: FaSkiing,
+        label: 'Pools',
+        icon: TbPool,
     },
 ]
 

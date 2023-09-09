@@ -2,6 +2,7 @@ main {
     width: 100%;
     max-width: 1500px;
     margin: 0px auto;
+
     
 }
 .showmore-button{
@@ -18,4 +19,8 @@ main {
 }
 .showmore-button:hover{
     background-color:#222222 ;
+}
+.card-main-container{
+    width: 100%;
+    height: auto;
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './navbar.css';
 import logo from '../../assets/logo.svg';
 import { BsSearch } from 'react-icons/bs';
@@ -7,11 +7,12 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { FaUserCircle } from 'react-icons/fa'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { DateRange } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import { HiMiniXMark } from 'react-icons/hi2';
 import { Link, useNavigate } from 'react-router-dom';
+import { AllRoomsContext } from '../RoomProvider';
 const Navbar = () => {
 
     const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
@@ -23,16 +24,22 @@ const Navbar = () => {
         endDate: new Date(),
         key: 'selection'
     }]);
+    const { setRooms, allRooms } = useContext(AllRoomsContext)
+
     const startDate = format(date[0].startDate, 'MMM d')
     const endDate = format(date[0].endDate, 'MMM d')
-
-    // const { setRooms, showSearchQuery, setShowSearchQuery } = useRooms();
+    const checkIn = format(date[0].startDate, 'MMM d, yyyy')
+    const checkOut = format(date[0].endDate, 'MMM d, yyyy')
+    const dateRange = `${checkIn} - ${checkOut}`
+    const mainDate = `${startDate}-${endDate}`
     const [infants, setInfants] = useState(0)
     const [adults, setAdults] = useState(0)
     const [pets, setPets] = useState(0)
     const [children, setChildren] = useState(0)
+    const [searchDestination, setSearchDestination] = useState('')
+    console.log(mainDate)
     let guests = adults + children;
-
+    const navigate = useNavigate()
     const resetAgeValue = () => {
         setAdults(0)
         setChildren(0)
@@ -40,7 +47,23 @@ const Navbar = () => {
         setPets(0)
 
     }
-    const navigate = useNavigate()
+
+    const handleNavSearch = () => {
+
+        fetch(`http://localhost:5000/allRooms/search?destination=${searchDestination}&guests=${guests}&infants=${infants}&pets=${pets}&dateRange=${dateRange}`)
+            .then(res => res.json())
+            .then(searchData => {
+
+                setRooms(searchData)
+                setShowSearchBox(false)
+                // navigate('/?searchResult')
+
+            })
+    }
+    const handleLogoClick = () => {
+        setRooms(allRooms)
+    }
+
     return (
 
         <nav>
@@ -82,7 +105,7 @@ const Navbar = () => {
                             </div> : ''}
                             <div onClick={() => setShowTab('anyWhere')} className={showTab === 'anyWhere' ? 'src-category1-active ' : 'src-category1'}>
                                 <p className='src-box-title'>Where</p>
-                                <p className='src-box-stitle'><input placeholder='Search-destination' type="text" name="" className='search-des' /></p>
+                                <p className='src-box-stitle'><input onChange={(e) => setSearchDestination(e.target.value)} placeholder='Search-destination' type="text" name="" className='search-des' /></p>
                             </div>
 
                             <div className='check'>
@@ -148,7 +171,7 @@ const Navbar = () => {
                                     {infants > 0 || pets > 0 || guests > 0 ? '' : 'Add Guests'}
                                     {infants ? '' + infants + ' Infants,' : ''}    {pets ? ' ' + pets + 'Pe..' : ''}
                                 </p>
-                                <div className='guest-search'>
+                                <div onClick={handleNavSearch} className='guest-search'>
                                     <BsSearch className='gsearh-icon' />
                                 </div>
                                 {infants > 0 || pets > 0 || guests > 0 ? <div onClick={() => resetAgeValue()} className='reset-btn'><HiMiniXMark /></div> : ''}
@@ -162,14 +185,14 @@ const Navbar = () => {
                 <div className="flex-container">
                     <div className="logo">
 
-                        <Link to="/"><img src={logo} alt="logo" width="100" height="100" /></Link>
+                        <Link onClick={handleLogoClick} to="/"><img src={logo} alt="logo" width="100" height="100" /></Link>
 
                     </div>
                     {showSearchBox ? <></> : <div data-aos-once="true" data-aos="zoom-out" onClick={() => setShowSearchBox(true)} className="category">
                         <div className="category-wrapper">
-                            <div onClick={() => setShowTab('anyWhere')} className='anywhere'>Anywhere</div>
-                            <div onClick={() => setShowTab('anyWeek')} className='any-week'>Any Week</div>
-                            <div onClick={() => setShowTab('addGuest')} className='add-guest'>Add Guests  </div>
+                            <div onClick={() => setShowTab('anyWhere')} className='anywhere'>{searchDestination ? searchDestination : 'Anywhere'}</div>
+                            <div onClick={() => setShowTab('anyWeek')} className='any-week'>{dateChanged ? mainDate : "Any Week"}</div>
+                            <div onClick={() => setShowTab('addGuest')} className='add-guest'>{guests ? guests + " guests" : "Add Guests"}</div>
                             <div className='search-icon-wrapper'><BsSearch className='search-icon' /></div>
                         </div>
                     </div>}
